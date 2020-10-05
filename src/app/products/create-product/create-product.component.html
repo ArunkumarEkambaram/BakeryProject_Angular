@@ -1,0 +1,39 @@
+<div class="container mb-5">
+  <h1>Add new product</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form #productData="ngForm" (ngSubmit)="addProduct()" novalidate>
+        <div class="form-group">
+          <label>Product Name</label>
+          <input type="text" class="form-control" #name="ngModel" [(ngModel)]="prod.Name" name="txtName"
+            [class.is-invalid]="name.invalid && name.touched">
+          <small *ngIf="name.invalid && name.touched">Product name is required</small>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" #desc="ngModel" [(ngModel)]="prod.Description" name="txtDesc"
+            [class.is-invalid]="desc.invalid && desc.touched">
+          <small *ngIf="desc.invalid && desc.touched">Description is required</small>
+        </div>
+
+        <div class="form-group">
+          <label>Price</label>
+          <input type="text" class="form-control" #price="ngModel" [(ngModel)]="prod.Price" name="txtPrice"
+            [class.is-invalid]="price.invalid && price.touched">
+          <small *ngIf="price.invalid && price.touched">Price is required</small>
+        </div>
+
+        <div class="form-group">
+          <label>Image</label>
+          <input type="file" class="form-control" name="txtImage"
+          (change)="onChange($event)">
+        </div>
+        <img [src]="imgSrc" style="max-width: 200px;">
+        <div class="form-group">
+          <button type="submit" class="btn btn-outline-success">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
